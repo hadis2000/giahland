@@ -18,6 +18,7 @@ const Input = (props: TextFieldPropsType) => {
 
   return (
     <TextField
+      fullWidth
       {...props}
       type={
         props.type !== "password"
