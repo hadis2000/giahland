@@ -1,0 +1,10 @@
+[
+  { "id": "1", "name": "گیاه رزماری", "imgSrc": "/img/plant/1.png" },
+  { "id": "2", "name": "گیاه آدنیوم", "imgSrc": "/img/plant/2.png" },
+  { "id": "3", "name": "گیاه آشیانتوس", "imgSrc": "/img/plant/3.png" },
+  { "id": "4", "name": "گیاه آناناسی", "imgSrc": "/img/plant/4.png" },
+  { "id": "5", "name": "گیاه بونسای", "imgSrc": "/img/plant/5.png" },
+  { "id": "6", "name": "گیاه سانسوریا", "imgSrc": "/img/plant/6.png" },
+  { "id": "7", "name": "گیاه پتوس", "imgSrc": "/img/plant/7.png" },
+  { "id": "8", "name": "گیاه پاچیرا", "imgSrc": "/img/plant/8.png" }
+]

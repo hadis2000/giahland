@@ -1,0 +1,12 @@
+@font-face {
+  font-family: diroz;
+  font-style: normal;
+  font-weight: normal;
+  src: url("/font/Dirooz.woff") format("woff");
+}
+
+* {
+  font-family: diroz !important;
+  padding: 0;
+  margin: 0;
+}

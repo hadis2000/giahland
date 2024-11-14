@@ -1,0 +1,62 @@
+[
+  {
+    "name": "گیاه طبیعی بابا آدم",
+    "price": "۸۵۲,۰۰۰ ",
+    "imgSrc": "/img/plans/1.png"
+  },
+  {
+    "name": "گیاه طبیعی یوکا",
+    "price": "۵۶۰,۰۰۰ ",
+    "imgSrc": "/img/plans/2.png"
+  },
+  {
+    "name": "گیاه طبیعی سانسوریا سبز",
+    "price": "۲۵۰,۰۰۰ ",
+    "imgSrc": "/img/plans/3.png"
+  },
+  {
+    "name": "گیاه طبیعی ساکولنت",
+    "price": "۵۷,۰۰۰  ",
+    "imgSrc": "/img/plans/4.png"
+  },
+  {
+    "name": "گیاه طبیعی کراسولا",
+    "price": "۹۰,۰۰۰ ",
+    "imgSrc": "/img/plans/5.png"
+  },
+  {
+    "name": "گیاه طبیعی یشم",
+    "price": "۱,۵۰۰,۰۰۰ ",
+    "imgSrc": "/img/plans/6.png"
+  },
+  {
+    "name": "گیاه طبیعی بونسای پاچیرا",
+    "price": "۸۸۰,۰۰۰ ",
+    "imgSrc": "/img/plans/7.png"
+  },
+  {
+    "name": "گیاه طبیعی کراسولا خرفه ای",
+    "price": "۱۶۹,۰۰۰ ",
+    "imgSrc": "/img/plans/8.png"
+  },
+  {
+    "name": "گیاه طبیعی بنت قنسول گلیتال",
+    "price": "۱۷۶,۰۰۰ ",
+    "imgSrc": "/img/plans/9.png"
+  },
+  {
+    "name": "گیاه طبیعی آنتوریوم",
+    "price": "۴۵۹,۰۰۰ ",
+    "imgSrc": "/img/plans/10.png"
+  },
+  {
+    "name": "گیاه طبیعی بونسای پاچیرا",
+    "price": "۸۸۰,۰۰۰ ",
+    "imgSrc": "/img/plans/11.png"
+  },
+  {
+    "name": "گیاه طبیعی آنتوریوم",
+    "price": "۴۹۸,۰۰۰ ",
+    "imgSrc": "/img/plans/12.png"
+  }
+]
