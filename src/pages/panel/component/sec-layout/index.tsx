@@ -1,18 +1,34 @@
 import { Box } from "@mui/material";
 import { ReactNode } from "react";
+import HeadText from "./head-text";
 
-const SecLayout = ({ children }: { children?: ReactNode }) => {
+const SecLayout = ({
+  children,
+  text,
+}: {
+  children?: ReactNode;
+  text?: string;
+}) => {
   return (
     <Box
       sx={{
-        border: "1px solid",
-        borderColor: "neutral.3",
-        borderRadius: "16px",
-        padding: "24px",
-        gap: "48px",
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
       }}
     >
-      {children}
+      <HeadText text={text} />
+      <Box
+        sx={{
+          border: "1px solid",
+          borderColor: "neutral.3",
+          borderRadius: "16px",
+          padding: "20px",
+          gap: "48px",
+        }}
+      >
+        {children}
+      </Box>
     </Box>
   );
 };

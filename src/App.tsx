@@ -6,6 +6,7 @@ import ShoppingCard from "./pages/shopping-card";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Panel from "./pages/panel";
+import UserInfo from "./pages/panel/user-info";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="*" element={<NotFound />} />
           <Route path="shopping-card" element={<ShoppingCard />} />
-          <Route path="/panel" element={<Panel />}></Route>
+          <Route path="/panel" element={<Panel />}>
+            <Route path="" element={<UserInfo />} />
+          </Route>
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
