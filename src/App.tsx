@@ -7,6 +7,8 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Panel from "./pages/panel";
 import UserInfo from "./pages/panel/user-info";
+import DoctorPlants from "./pages/panel/doctor-plants";
+import Message from "./pages/panel/message";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="shopping-card" element={<ShoppingCard />} />
           <Route path="/panel" element={<Panel />}>
             <Route path="" element={<UserInfo />} />
+            <Route path="doctor" element={<DoctorPlants />} />
+            <Route path="message" element={<Message />} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />
