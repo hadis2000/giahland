@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import Counter from "../../../../compopnent/counter";
 
 const Item = () => {
   return (
@@ -49,6 +50,7 @@ const Item = () => {
             ۵۶۰/۰۰۰ تومان
           </Typography>
         </Box>
+        <Counter num={1} />
       </Box>
     </Box>
   );
