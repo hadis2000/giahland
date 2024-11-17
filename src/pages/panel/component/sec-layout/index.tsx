@@ -24,7 +24,9 @@ const SecLayout = ({
           borderColor: "neutral.3",
           borderRadius: "16px",
           padding: "20px",
-          gap: "48px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
         }}
       >
         {children}
