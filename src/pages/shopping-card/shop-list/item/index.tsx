@@ -5,7 +5,7 @@ const Item = () => {
   return (
     <Box sx={{ display: "flex" }}>
       <Box
-        width="160px"
+        width="150px"
         height="200px"
         sx={{
           display: "flex",

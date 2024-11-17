@@ -9,7 +9,7 @@ const ShopList = () => {
         borderColor: "neutral.6",
         borderRadius: "16px",
         padding: "16px",
-        width: "60%",
+        width: { md: "60%", xs: "80%" },
       }}
     >
       <Typography variant="h6" component="h6" fontSize="16px" fontWeight="500">

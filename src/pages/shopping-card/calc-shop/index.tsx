@@ -10,7 +10,7 @@ const CalcShop = () => {
         borderColor: "neutral.6",
         borderRadius: "16px",
         padding: "16px",
-        width: "25%",
+        width: { md: "25%", xs: "80%" },
         color: "neutral.10",
         display: "flex",
         flexDirection: "column",

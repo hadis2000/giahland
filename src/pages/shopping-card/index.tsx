@@ -7,7 +7,7 @@ const ShoppingCard = () => {
   return (
     <Box
       width="100%"
-      height="80vh"
+      height={{ md: "80vh", xs: "suto" }}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -17,10 +17,13 @@ const ShoppingCard = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { md: "row", xs: "column-reverse" },
           justifyContent: "space-between",
           alignItems: "center",
           width: "90%",
-          height: "50vh",
+          height: { md: "50vh", xs: "suto" },
+          gap: 2,
+          py: 2,
         }}
       >
         <ShopList />
