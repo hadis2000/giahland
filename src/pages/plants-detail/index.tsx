@@ -1,22 +1,7 @@
-import { Box } from "@mui/material";
+import Info from "./info";
 
 const PlantsDetails = () => {
-  return (
-    <Box
-      sx={{
-        border: "1px solid gray",
-        width: "97%",
-        mx: "auto",
-        padding: 2,
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        mt: 8,
-      }}
-    >
-      <Box>ggggg</Box>
-    </Box>
-  );
+  return <Info />;
 };
 
 export default PlantsDetails;
