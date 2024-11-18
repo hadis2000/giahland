@@ -1,12 +1,12 @@
 import { Box } from "@mui/material";
 import Price from "./price";
 import PlantsInfo from "./plants-info";
+import Gallery from "./gallery";
 
 const Info = () => {
   return (
     <Box
       sx={{
-        border: "1px solid gray",
         width: "97%",
         mx: "auto",
         padding: 2,
@@ -17,9 +17,7 @@ const Info = () => {
         mt: 8,
       }}
     >
-      <Box width="100%" sx={{ border: "1px solid red" }}>
-        ggggg
-      </Box>
+      <Gallery />
       <PlantsInfo />
       <Box
         width="100%"
