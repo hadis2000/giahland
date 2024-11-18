@@ -26,7 +26,7 @@ const StyledImageListItem = styled(ImageListItem)(({ theme }) => ({
 const Gallery = () => {
   return (
     <Stack width="100%">
-      <img width="438px" height="461px" src="/img/shop/1.png" />
+      <img width="400px" src="/img/shop/1.png" />
 
       <ImageList cols={4}>
         {itemData.map((item) => (

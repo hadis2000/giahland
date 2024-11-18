@@ -45,7 +45,7 @@ const Price = () => {
         <Typography>قیمت:</Typography>
         <Typography>۵۶۰/۰۰۰ تومان</Typography>
       </Stack>
-      <Btn sx={{ px: "60px" }}>افزودن به سبد خرید</Btn>
+      <Btn sx={{ px: { lg: "60px" } }}>افزودن به سبد خرید</Btn>
     </Box>
   );
 };
