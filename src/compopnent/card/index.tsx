@@ -1,6 +1,7 @@
 import { Box, CardProps } from "@mui/material";
 import Btn from "../button";
 import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   width: "272px",
@@ -21,6 +22,8 @@ export type CardPropType = CustomCardProp & CardProps;
 const Card = (props: CardPropType) => {
   const { name, imgSrc, price } = props;
 
+  const nav = useNavigate();
+
   return (
     <StyledBox {...props}>
       <Box
@@ -39,6 +42,7 @@ const Card = (props: CardPropType) => {
         <Box>{price} تومان</Box>
       </Box>
       <Btn
+        onClick={() => nav("plant-detail/2")}
         sx={{
           width: "100%",
         }}

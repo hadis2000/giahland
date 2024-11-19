@@ -25,12 +25,18 @@ import {
 import Btn from "../button";
 import IconBtn from "../icon-btn";
 import Input from "../input";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Info from "../info";
 import ExitBtn from "../exit-btn";
 import PanelMenu from "../panel-menu";
 
-const pages = ["صفحه اصلی", "گیاه پزشک", "وبلاگ", "تماس با ما", "درباره ما"];
+const pages = [
+  { title: "صفحه اصلی", url: "/" },
+  { title: "گیاه پزشک", url: "" },
+  { title: "وبلاگ", url: "" },
+  { title: "تماس با ما", url: "" },
+  { title: "درباره ما", url: "" },
+];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -43,6 +49,8 @@ function Header() {
   const { pathname } = useLocation();
 
   const isPanel = pathname.includes("panel");
+
+  const nav = useNavigate();
 
   return (
     <AppBar
@@ -92,10 +100,10 @@ function Header() {
                 {isPanel && <Info />}
 
                 <List>
-                  {pages.map((text) => (
-                    <ListItem key={text} disablePadding>
-                      <ListItemButton>
-                        <ListItemText primary={text} />
+                  {pages.map((it, index) => (
+                    <ListItem key={index} disablePadding>
+                      <ListItemButton onClick={() => nav(it.url)}>
+                        <ListItemText primary={it.title} />
                       </ListItemButton>
                     </ListItem>
                   ))}
@@ -135,19 +143,23 @@ function Header() {
               },
             }}
           >
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={index}
+                onClick={() => {
+                  nav(page.url);
+                  handleCloseNavMenu();
+                }}
                 sx={{
                   my: 2,
                   display: "block",
-                  color: page === "صفحه اصلی" ? "primary.main" : "neutral.13",
+                  color:
+                    page.title === "صفحه اصلی" ? "primary.main" : "neutral.13",
                   fontWeight: 400,
                   fontSize: "18px",
                 }}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </Box>
@@ -185,19 +197,25 @@ function Header() {
                   sx={{ display: { xs: "none", md: "flex" } }}
                   variant="outlined"
                   startIcon={<Login />}
+                  onClick={() => nav("/login")}
                 >
                   ورود / ثبت نام
                 </Btn>
                 <IconBtn
                   label="ورود / ثبت نام"
                   sx={{ display: { xs: "flex", md: "none" } }}
+                  onClick={() => nav("/login")}
                 >
                   <Login />
                 </IconBtn>
               </>
             )}
 
-            <IconBtn sx={{ px: { md: "7px", xs: "5px" } }} label="سبد خرید">
+            <IconBtn
+              onClick={() => nav("/shopping-card")}
+              sx={{ px: { md: "7px", xs: "5px" } }}
+              label="سبد خرید"
+            >
               <ShoppingCartCheckout />
             </IconBtn>
             <IconBtn sx={{ display: { xs: "none", md: "flex" } }} label="جستجو">
