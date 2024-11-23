@@ -10,6 +10,7 @@ import UserInfo from "./pages/panel/user-info";
 import DoctorPlants from "./pages/panel/doctor-plants";
 import Message from "./pages/panel/message";
 import PlantsDetails from "./pages/plants-detail";
+import Test from "./test";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="message" element={<Message />} />
           </Route>
           <Route path="plant-detail/:id" element={<PlantsDetails />} />
+          <Route path="/test" element={<Test />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
