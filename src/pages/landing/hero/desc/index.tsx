@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Btn from "../../../../compopnent/button";
 import { ArrowBack } from "@mui/icons-material";
 import CountIt from "../count";
@@ -10,6 +10,9 @@ const items = [
 ];
 
 const Desc = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Box
       sx={{
@@ -59,11 +62,11 @@ const Desc = () => {
           mx: { md: 0, xs: "auto" },
         }}
       >
-        <Btn size="small" sx={{ width: "100%" }}>
+        <Btn size={isSmallScreen ? "small" : "large"} sx={{ width: "100%" }}>
           گیاهان تخفیف دار
         </Btn>
         <Btn
-          size="small"
+          size={isSmallScreen ? "small" : "large"}
           sx={{ width: "100%" }}
           endIcon={<ArrowBack />}
           variant="outlined"
