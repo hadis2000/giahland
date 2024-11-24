@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Landing from "./pages/landing";
 import MainLayout from "./pages/main-layout";
 import NotFound from "./pages/not-found";
@@ -14,24 +14,22 @@ import Test from "./test";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route path="/" element={<Landing />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="shopping-card" element={<ShoppingCard />} />
-          <Route path="/panel" element={<Panel />}>
-            <Route path="" element={<UserInfo />} />
-            <Route path="doctor" element={<DoctorPlants />} />
-            <Route path="message" element={<Message />} />
-          </Route>
-          <Route path="plant-detail/:id" element={<PlantsDetails />} />
-          <Route path="/test" element={<Test />} />
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={<Landing />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="shopping-card" element={<ShoppingCard />} />
+        <Route path="/panel" element={<Panel />}>
+          <Route path="" element={<UserInfo />} />
+          <Route path="doctor" element={<DoctorPlants />} />
+          <Route path="message" element={<Message />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
+        <Route path="plant-detail/:id" element={<PlantsDetails />} />
+        <Route path="/test" element={<Test />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   );
 }
 
