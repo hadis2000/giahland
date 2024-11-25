@@ -8,6 +8,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import Rtl from "./cache";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
 async function enableMocking() {
@@ -16,14 +19,19 @@ async function enableMocking() {
   return worker.start();
 }
 
+const queryClient = new QueryClient();
+
 enableMocking().then(() => {
   root.render(
     <BrowserRouter>
-      <Rtl>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </Rtl>
+      <QueryClientProvider client={queryClient}>
+        <Rtl>
+          <ThemeProvider theme={theme}>
+            <App />
+            <ReactQueryDevtools initialIsOpen />
+          </ThemeProvider>
+        </Rtl>
+      </QueryClientProvider>
     </BrowserRouter>
   );
 });
