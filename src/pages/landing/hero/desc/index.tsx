@@ -4,9 +4,9 @@ import { ArrowBack } from "@mui/icons-material";
 import CountIt from "../count";
 
 const items = [
-  { label: "گیاه خانگی", count: "۹۴۳" },
-  { label: "گیاه تزئینی", count: "۲۳۴" },
-  { label: "گیاه کادویی", count: "۱۲۸" },
+  { label: "گیاه خانگی", count: 943 },
+  { label: "گیاه تزئینی", count: 234 },
+  { label: "گیاه کادویی", count: 128 },
 ];
 
 const Desc = () => {
@@ -83,7 +83,7 @@ const Desc = () => {
         }}
       >
         {items.map((it, index) => (
-          <CountIt key={index} {...it} />
+          <CountIt key={index} targetNumber={+it.count} label={it.label} />
         ))}
       </Box>
     </Box>

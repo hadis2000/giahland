@@ -1,12 +1,31 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useEffect, useState } from "react";
 
 export type CountItPropType = {
-  label?: string;
-  count?: string;
+  label: string;
+  targetNumber: number;
+  duration?: number;
 };
 
-const CountIt = ({ count, label }: CountItPropType) => {
+const CountIt = ({ targetNumber, label, duration = 4000 }: CountItPropType) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const increment = Math.ceil(targetNumber / (duration / 100)); // مقدار افزایش در هر گام
+    const interval = setInterval(() => {
+      setCount((prev) => {
+        if (prev + increment >= targetNumber) {
+          clearInterval(interval);
+          return targetNumber;
+        }
+        return prev + increment;
+      });
+    }, 100); // هر 100 میلی‌ثانیه مقدار جدید به‌روزرسانی می‌شود
+
+    return () => clearInterval(interval); // پاک‌سازی تایمر هنگام خروج از کامپوننت
+  }, [targetNumber, duration]);
+
   return (
     <Box sx={{ textAlign: "center" }}>
       <Typography
