@@ -42,7 +42,7 @@ const Card = (props: CardPropType) => {
         <Box>{price} تومان</Box>
       </Box>
       <Btn
-        onClick={() => nav("plant-detail/2")}
+        onClick={() => nav("/plant-detail/2")}
         sx={{
           width: "100%",
         }}
