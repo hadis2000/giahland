@@ -12,12 +12,12 @@ const Landing = () => {
       <Hero />
       <Benefits />
       <Ax />
-      <Slider />
+      <Slider title="گیاهان آپارتمانی" />
       <List />
       <Services />
-      <Slider />
+      {/* <Slider /> */}
       <List />
-      <Slider />
+      {/* <Slider /> */}
       <Footer />
     </>
   );

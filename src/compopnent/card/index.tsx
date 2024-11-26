@@ -2,6 +2,7 @@ import { Box, CardProps } from "@mui/material";
 import Btn from "../button";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { plantType } from "../../model";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   width: "272px",
@@ -11,16 +12,12 @@ const StyledBox = styled(Box)(({ theme }) => ({
   borderRadius: "12px",
 }));
 
-export type CustomCardProp = {
-  name?: string;
-  imgSrc?: string;
-  price?: string;
-};
+export type CustomCardProp = Pick<plantType, "title" | "img" | "price">;
 
 export type CardPropType = CustomCardProp & CardProps;
 
 const Card = (props: CardPropType) => {
-  const { name, imgSrc, price } = props;
+  const { title, img, price } = props;
 
   const nav = useNavigate();
 
@@ -28,15 +25,15 @@ const Card = (props: CardPropType) => {
     <StyledBox {...props}>
       <Box
         component="img"
-        src={imgSrc}
-        alt={name}
+        src={img ? img[0] : "/img/empty.jpg"}
+        alt={title}
         sx={{
           width: "100%",
           height: "auto",
           borderRadius: "8px",
         }}
       />
-      <Box sx={{ m: 1 }}>{name}</Box>
+      <Box sx={{ m: 1 }}>{title}</Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", m: 1 }}>
         <Box>قیمت : </Box>
         <Box>{price} تومان</Box>
