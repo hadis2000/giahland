@@ -3,7 +3,11 @@ import SecHeader from "../components/sec-header";
 import Card from "../../../compopnent/card";
 import CarouselItems from "../../../compopnent/carousel";
 import { chunkArray } from "../hook";
-import { useGetPlants, useResponsive } from "./hook";
+import { useResponsive } from "./hook";
+
+import { useQuery } from '@tanstack/react-query';
+import { fetchData } from "../../../utils/apiService";
+import { plantType } from "../../../model";
 
 export type SliderPopType = {
   title?: string;
@@ -11,26 +15,24 @@ export type SliderPopType = {
 };
 
 const Slider = ({ title }: SliderPopType) => {
+
   const { isMobile, isLaptop, isTablet } = useResponsive();
+  const { data, error, isLoading } = useQuery({ queryKey: ["plants"], queryFn: () => fetchData('/getPlants') });
 
-  const { data, isError, isPending, error } = useGetPlants();
 
-  console.log(error, "dataaaaaaa");
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {String(error)}</p>;
 
   // تعداد ایتم‌ها بسته به اندازه صفحه
-  // const itemsPerSlide = isMobile ? 1 : isLaptop ? 3 : isTablet ? 2 : 4;
-  // const groupedItems = chunkArray(data, itemsPerSlide);
-
-  // if (isPending) return <>wwwwwwwwwwwwwwwwwwwww</>;
-
-  // if (isError) return <>ddddddddddddddddddddddd</>;
+  const itemsPerSlide = isMobile ? 1 : isLaptop ? 3 : isTablet ? 2 : 4;
+  const groupedItems = chunkArray(data, itemsPerSlide);
 
   return (
     <Box sx={{ m: 5, overflow: "hidden" }}>
       <SecHeader>{title}</SecHeader>
 
-      {/* <CarouselItems>
-        {groupedItems.map((group, index) => (
+      <CarouselItems>
+        {(groupedItems as plantType[][]).map((group, index) => (
           <Box key={index} sx={{ display: "flex", gap: 10 }}>
             {group.map((it, index) => (
               <Card
@@ -42,7 +44,7 @@ const Slider = ({ title }: SliderPopType) => {
             ))}
           </Box>
         ))}
-      </CarouselItems> */}
+      </CarouselItems>
     </Box>
   );
 };

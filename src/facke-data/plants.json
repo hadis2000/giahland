@@ -1,62 +1,62 @@
 [
   {
-    "name": "گیاه طبیعی بابا آدم",
+    "title": "گیاه طبیعی بابا آدم",
     "price": "۸۵۲,۰۰۰ ",
-    "imgSrc": "/img/plans/1.png"
+    "img": ["/img/plans/1.png"]
   },
   {
-    "name": "گیاه طبیعی یوکا",
+    "title": "گیاه طبیعی یوکا",
     "price": "۵۶۰,۰۰۰ ",
-    "imgSrc": "/img/plans/2.png"
+    "img": ["/img/plans/2.png"]
   },
   {
-    "name": "گیاه طبیعی سانسوریا سبز",
+    "title": "گیاه طبیعی سانسوریا سبز",
     "price": "۲۵۰,۰۰۰ ",
-    "imgSrc": "/img/plans/3.png"
+    "img": ["/img/plans/3.png"]
   },
   {
-    "name": "گیاه طبیعی ساکولنت",
+    "title": "گیاه طبیعی ساکولنت",
     "price": "۵۷,۰۰۰  ",
-    "imgSrc": "/img/plans/4.png"
+    "img": ["/img/plans/4.png"]
   },
   {
-    "name": "گیاه طبیعی کراسولا",
+    "title": "گیاه طبیعی کراسولا",
     "price": "۹۰,۰۰۰ ",
-    "imgSrc": "/img/plans/5.png"
+    "img": ["/img/plans/5.png"]
   },
   {
-    "name": "گیاه طبیعی یشم",
+    "title": "گیاه طبیعی یشم",
     "price": "۱,۵۰۰,۰۰۰ ",
-    "imgSrc": "/img/plans/6.png"
+    "img": ["/img/plans/6.png"]
   },
   {
-    "name": "گیاه طبیعی بونسای پاچیرا",
+    "title": "گیاه طبیعی بونسای پاچیرا",
     "price": "۸۸۰,۰۰۰ ",
-    "imgSrc": "/img/plans/7.png"
+    "img": ["/img/plans/7.png"]
   },
   {
-    "name": "گیاه طبیعی کراسولا خرفه ای",
+    "title": "گیاه طبیعی کراسولا خرفه ای",
     "price": "۱۶۹,۰۰۰ ",
-    "imgSrc": "/img/plans/8.png"
+    "img": ["/img/plans/8.png"]
   },
   {
-    "name": "گیاه طبیعی بنت قنسول گلیتال",
+    "title": "گیاه طبیعی بنت قنسول گلیتال",
     "price": "۱۷۶,۰۰۰ ",
-    "imgSrc": "/img/plans/9.png"
+    "img": ["/img/plans/9.png"]
   },
   {
-    "name": "گیاه طبیعی آنتوریوم",
+    "title": "گیاه طبیعی آنتوریوم",
     "price": "۴۵۹,۰۰۰ ",
-    "imgSrc": "/img/plans/10.png"
+    "img": ["/img/plans/10.png"]
   },
   {
-    "name": "گیاه طبیعی بونسای پاچیرا",
+    "title": "گیاه طبیعی بونسای پاچیرا",
     "price": "۸۸۰,۰۰۰ ",
-    "imgSrc": "/img/plans/11.png"
+    "img": ["/img/plans/11.png"]
   },
   {
-    "name": "گیاه طبیعی آنتوریوم",
+    "title": "گیاه طبیعی آنتوریوم",
     "price": "۴۹۸,۰۰۰ ",
-    "imgSrc": "/img/plans/12.png"
+    "img": ["/img/plans/12.png"]
   }
 ]
