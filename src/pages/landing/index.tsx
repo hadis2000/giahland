@@ -12,7 +12,7 @@ const Landing = () => {
       <Hero />
       <Benefits />
       <Ax />
-      <Slider title="گیاهان آپارتمانی" />
+      <Slider title="گیاهان آپارتمانی" id="31" />
       <List />
       <Services />
       {/* <Slider /> */}

@@ -5,20 +5,21 @@ import CarouselItems from "../../../compopnent/carousel";
 import { chunkArray } from "../hook";
 import { useResponsive } from "./hook";
 
-import { useQuery } from '@tanstack/react-query';
-import { fetchData } from "../../../utils/apiService";
+import { useFetchData } from "../../../utils/apiService";
 import { plantType } from "../../../model";
 
 export type SliderPopType = {
   title?: string;
-  apiUrl?: string;
+  id?: string;
 };
 
-const Slider = ({ title }: SliderPopType) => {
-
+const Slider = ({ title, id }: SliderPopType) => {
   const { isMobile, isLaptop, isTablet } = useResponsive();
-  const { data, error, isLoading } = useQuery({ queryKey: ["plants"], queryFn: () => fetchData('/getPlants') });
-
+  const { data, error, isLoading } = useFetchData({
+    queryKey: "plants",
+    apiUrl: "/getPlants",
+    parameter: { id: id },
+  });
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {String(error)}</p>;
