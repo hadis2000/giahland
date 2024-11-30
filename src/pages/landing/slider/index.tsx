@@ -9,16 +9,16 @@ import { useFetchData } from "../../../utils/apiService";
 import { plantType } from "../../../model";
 
 export type SliderPopType = {
-  title?: string;
-  id?: string;
+  plantTypeTitle?: string;
+  plantTypeId?: string;
 };
 
-const Slider = ({ title, id }: SliderPopType) => {
+const Slider = ({ plantTypeTitle, plantTypeId }: SliderPopType) => {
   const { isMobile, isLaptop, isTablet } = useResponsive();
   const { data, error, isLoading } = useFetchData({
-    queryKey: "plants",
+    queryKey: ["plants", plantTypeId],
     apiUrl: "/getPlants",
-    parameter: { id: id },
+    parameter: { plantTypeId: plantTypeId },
   });
 
   if (isLoading) return <p>Loading...</p>;
@@ -30,7 +30,7 @@ const Slider = ({ title, id }: SliderPopType) => {
 
   return (
     <Box sx={{ m: 5, overflow: "hidden" }}>
-      <SecHeader>{title}</SecHeader>
+      <SecHeader>{plantTypeTitle}</SecHeader>
 
       <CarouselItems>
         {(groupedItems as plantType[][]).map((group, index) => (

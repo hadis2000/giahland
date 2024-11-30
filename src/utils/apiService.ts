@@ -14,7 +14,7 @@ export const postData = async (url: string, data: object) => {
 
 export const useFetchData = ({ queryKey, ...apiProps }: useFetchDataType) => {
   return useQuery({
-    queryKey: [queryKey],
+    queryKey: queryKey,
     queryFn: () => fetchData(apiProps),
   });
 };

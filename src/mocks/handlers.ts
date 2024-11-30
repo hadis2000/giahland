@@ -1,5 +1,5 @@
 import { http, HttpResponse } from "msw";
-import { plants } from "../../data/db.json";
+import { plants, plantType } from "../../data/db.json";
 
 export const handlers = [
   // Intercept "GET https://example.com/user" requests...
@@ -11,7 +11,27 @@ export const handlers = [
   //     lastName: "Maverick",
   //   });
   // }),
-  http.get("/getPlants", () => {
-    return HttpResponse.json(plants);
+  http.get("/getPlants", ({ request }) => {
+    const url = new URL(request.url);
+    const plantTypeId = url.searchParams.get("plantTypeId");
+
+    // if (!plantTypeId) {
+    //   return new HttpResponse(null, { status: 404 })
+    // }
+
+    let filteredPlant = plants;
+
+    if (
+      plantTypeId &&
+      plantTypeId !== undefined &&
+      plants.filter((it) => it.type === plantTypeId).length
+    ) {
+      filteredPlant = plants.filter((it) => it.type === plantTypeId);
+    }
+
+    return HttpResponse.json(filteredPlant);
+  }),
+  http.get("/getPlantType", () => {
+    return HttpResponse.json(plantType);
   }),
 ];

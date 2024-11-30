@@ -1,4 +1,5 @@
 import Footer from "../../compopnent/footer";
+import { useFetchData } from "../../utils/apiService";
 import Ax from "./ax";
 import Benefits from "./benefits";
 import Hero from "./hero";
@@ -7,17 +8,22 @@ import Services from "./services";
 import Slider from "./slider";
 
 const Landing = () => {
+  const { data } = useFetchData({
+    queryKey: ["plantType"],
+    apiUrl: "/getPlantType",
+  });
+
   return (
     <>
       <Hero />
       <Benefits />
       <Ax />
-      <Slider title="گیاهان آپارتمانی" id="31" />
+      {data && <Slider {...data[0]} />}
       <List />
       <Services />
-      {/* <Slider /> */}
+      {data && <Slider {...data[1]} />}
       <List />
-      {/* <Slider /> */}
+      {data && <Slider {...data[2]} />}
       <Footer />
     </>
   );
