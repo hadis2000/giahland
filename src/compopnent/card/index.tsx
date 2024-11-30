@@ -25,18 +25,18 @@ const Card = (props: CardPropType) => {
     <StyledBox {...props}>
       <Box
         component="img"
-        src={img ? img[0] : "/img/empty.jpg"}
+        src={img && img.length > 0 ? img[0] : "/img/empty.jpg"}
         alt={title}
         sx={{
           width: "100%",
-          height: "auto",
+          height: "63%",
           borderRadius: "8px",
         }}
       />
-      <Box sx={{ m: 1 }}>{title}</Box>
+      <Box sx={{ m: 1 }}>{title || "-"}</Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", m: 1 }}>
         <Box>قیمت : </Box>
-        <Box>{price} تومان</Box>
+        <Box>{price || "-"} تومان</Box>
       </Box>
       <Btn
         onClick={() => nav("/plant-detail/2")}

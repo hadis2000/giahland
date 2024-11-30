@@ -1,6 +1,5 @@
 import { http, HttpResponse } from "msw";
-// import plants from '../../data/db.json'
-import plants from '../facke-data/plants.json'
+import { plants } from "../../data/db.json";
 
 export const handlers = [
   // Intercept "GET https://example.com/user" requests...
