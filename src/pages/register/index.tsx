@@ -1,8 +1,11 @@
 import { Typography } from "@mui/material";
 import LogRegLayout from "../../compopnent/login-reg-layout";
 import Form from "./form";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const nav = useNavigate();
+
   return (
     <LogRegLayout headText="ثبت نام ">
       <Form />
@@ -13,6 +16,7 @@ const Register = () => {
         <Typography
           component="span"
           sx={{ color: "primary.main", cursor: "pointer" }}
+          onClick={() => nav("/login")}
         >
           {" "}
           ورود{" "}

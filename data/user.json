@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "fname": "حدیثه",
+    "lname": "حسینی",
+    "phone": "09111111111",
+    "email": "hosseini@gmail.com",
+    "password": "11111111",
+    "address": "ساری",
+    "homephone": "01111111111",
+    "img": ""
+  },
+  {
+    "id": 2,
+    "fname": "user1",
+    "lname": "",
+    "phone": "09222222222",
+    "email": "user@gmail.com",
+    "password": "22222222",
+    "address": "tehran",
+    "homephone": "02222222222",
+    "img": ""
+  }
+]
