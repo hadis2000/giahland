@@ -17,7 +17,7 @@ const List = () => {
   const groupedItems = chunkArray(plan, itemsPerSlide);
 
   return (
-    <CarouselItems>
+    <CarouselItems height={300}>
       {groupedItems.map((group, index) => (
         <Box key={index} sx={{ display: "flex", gap: 10, m: 5 }}>
           {group.map((it, index) => (

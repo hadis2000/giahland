@@ -2,15 +2,17 @@ import Carousel from "react-material-ui-carousel";
 import { CustomCardProp } from "../card";
 import { ReactNode } from "react";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { CarouselProps } from "react-material-ui-carousel/dist/components/types";
 
 export type CarouselItemsType = {
   items?: CustomCardProp[];
   children?: ReactNode;
-};
+} & CarouselProps;
 
-const CarouselItems = ({ children }: CarouselItemsType) => {
+const CarouselItems = ({ children, ...carouselProps }: CarouselItemsType) => {
   return (
     <Carousel
+      {...carouselProps}
       NextIcon={<ArrowBackIos />}
       PrevIcon={<ArrowForwardIos />}
       navButtonsAlwaysVisible

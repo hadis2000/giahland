@@ -32,7 +32,7 @@ const Slider = ({ plantTypeTitle, plantTypeId }: SliderPopType) => {
     <Box sx={{ m: 5, overflow: "hidden" }}>
       <SecHeader>{plantTypeTitle}</SecHeader>
 
-      <CarouselItems>
+      <CarouselItems height={400}>
         {(groupedItems as plantType[][]).map((group, index) => (
           <Box key={index} sx={{ display: "flex", gap: 10 }}>
             {group.map((it, index) => (
