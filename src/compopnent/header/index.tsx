@@ -130,6 +130,7 @@ function Header() {
               fontWeight: 700,
               color: "inherit",
             }}
+            onClick={() => nav("/")}
           >
             گیاه لند
           </Typography>
