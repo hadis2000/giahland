@@ -12,9 +12,14 @@ import Message from "./pages/panel/message";
 import PlantsDetails from "./pages/plants-detail";
 import Test from "./test";
 
+// store
+import {store} from "./store"
+import {Provider} from 'react-redux'
+
 function App() {
   return (
-    <Routes>
+    <Provider store={store}>
+      <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<NotFound />} />
@@ -30,6 +35,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
     </Routes>
+    </Provider>
   );
 }
 

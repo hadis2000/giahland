@@ -2,22 +2,28 @@ import { Formik, Field, Form as FormikForm } from "formik";
 import Input from "../../compopnent/input";
 import Btn from "../../compopnent/button";
 import { Typography } from "@mui/material";
-import * as Yup from "yup";
+import { validation } from "./validatin";
 
-const validation = Yup.object({
-  phone: Yup.string()
-    .required("شماره تماس را وارد کنید")
-    .matches(/^\d{11}$/, "شماره تلفن باید دقیقا ۱۱ رقم باشد"),
-  password: Yup.string()
-    .required("رمز عبور را وارد کنید")
-    .min(6, "حداقل تعداد کاراکتر 6 عدد میباشد"),
-});
+// auth
+import { useDispatch } from "react-redux";
+import { usePostData } from "../../utils/apiService";
+import { loginSuccess } from "../../features/auth/authSlice";
 
 const Form = () => {
+  const dispatch = useDispatch();
+
+  const { mutate: postData } = usePostData({
+    successFunc: (data) => {
+      dispatch(loginSuccess(data));
+    },
+  });
+
   return (
     <Formik
       initialValues={{ phone: "", password: "" }}
-      onSubmit={() => {}}
+      onSubmit={(e) => {
+        postData({ url: "/login", data: e });
+      }}
       validationSchema={validation}
     >
       {({ touched, errors, isValid, dirty }) => (
