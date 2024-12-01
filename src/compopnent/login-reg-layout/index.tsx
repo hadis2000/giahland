@@ -1,5 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Home } from "@mui/icons-material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LogRegLayout = ({
   children,
@@ -8,6 +10,8 @@ const LogRegLayout = ({
   children?: ReactNode;
   headText?: string;
 }) => {
+  const nav = useNavigate();
+
   return (
     <Box
       width="100%"
@@ -57,8 +61,23 @@ const LogRegLayout = ({
           width: { md: "50%", xs: "100%" },
           height: "100vh",
           overflow: "hidden",
+          position: "relative",
         }}
       >
+        <IconButton
+          onClick={() => nav("/")}
+          sx={{
+            backgroundColor: "primary.main",
+            color: "#fff",
+            position: "absolute",
+            top: 10,
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <Home fontSize="large" />
+        </IconButton>
+
         <img width="100%" height="100%" loading="lazy" src="/img/log-reg.png" />
       </Box>
     </Box>
