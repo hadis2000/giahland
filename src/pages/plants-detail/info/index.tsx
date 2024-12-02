@@ -2,8 +2,9 @@ import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Price from "./price";
 import PlantsInfo from "./plants-info";
 import Gallery from "./gallery";
+import { plantType } from "../../../model";
 
-const Info = () => {
+const Info = ({ img, price, ...restInfo }: plantType) => {
   const theme = useTheme();
 
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -23,14 +24,14 @@ const Info = () => {
         // mt: 8,
       }}
     >
-      <Gallery />
-      {!isMobile && <PlantsInfo />}
+      <Gallery img={img} />
+      {!isMobile && <PlantsInfo {...restInfo} />}
 
       <Box
         width="100%"
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Price />
+        <Price price={price} />
       </Box>
     </Box>
   );

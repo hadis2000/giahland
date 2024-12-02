@@ -1,5 +1,6 @@
 import { MoreHorizOutlined } from "@mui/icons-material";
 import { Box, ImageList, ImageListItem, Stack, styled } from "@mui/material";
+import { plantType } from "../../../../model";
 
 const itemData = [
   {
@@ -23,10 +24,13 @@ const StyledImageListItem = styled(ImageListItem)(({ theme }) => ({
   overflow: "hidden",
 }));
 
-const Gallery = () => {
+const Gallery = ({ img }: Pick<plantType, "img">) => {
   return (
     <Stack width="100%">
-      <img width="400px" src="/img/shop/1.png" />
+      <img
+        width="400px"
+        src={img && img.length > 0 ? img[0] : "/img/empty.jpg"}
+      />
 
       <ImageList cols={4}>
         {itemData.map((item) => (

@@ -25,6 +25,9 @@ const PlantsDetails = () => {
     }
   }, [data]);
 
+
+  if (!data) return <>Loading...</>;
+
   return (
     <>
       <Info />
