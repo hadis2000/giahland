@@ -12,12 +12,15 @@ const StyledBox = styled(Box)(({ theme }) => ({
   borderRadius: "12px",
 }));
 
-export type CustomCardProp = Pick<plantType, "title" | "img" | "price">;
+export type CustomCardProp = { plantId?: number } & Pick<
+  plantType,
+  "title" | "img" | "price"
+>;
 
 export type CardPropType = CustomCardProp & CardProps;
 
 const Card = (props: CardPropType) => {
-  const { title, img, price } = props;
+  const { title, img, price, plantId } = props;
 
   const nav = useNavigate();
 
@@ -39,7 +42,7 @@ const Card = (props: CardPropType) => {
         <Box>{price || "-"} تومان</Box>
       </Box>
       <Btn
-        onClick={() => nav("/plant-detail/2")}
+        onClick={() => nav(`/plant-detail/${plantId}`)}
         sx={{
           width: "100%",
         }}

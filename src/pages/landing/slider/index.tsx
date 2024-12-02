@@ -38,6 +38,7 @@ const Slider = ({ plantTypeTitle, plantTypeId }: SliderPopType) => {
             {group.map((it, index) => (
               <Card
                 key={index}
+                plantId={it.id}
                 title={it.title}
                 price={it.price}
                 img={it.img}
