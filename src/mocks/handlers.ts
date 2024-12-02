@@ -34,4 +34,12 @@ export const handlers = [
   http.get("/getPlantType", () => {
     return HttpResponse.json(plantType);
   }),
+  http.get("/getPlantById", ({ request }) => {
+    const url = new URL(request.url);
+    const plantId = url.searchParams.get("plantId");
+
+    const plant = plantId ? plants.find((p) => p.id === +plantId) : "null";
+
+    return HttpResponse.json(plant);
+  }),
 ];
