@@ -12,26 +12,24 @@ const PlantsDetails = () => {
   }, []);
 
   const { id } = useParams();
-  const { data } = useFetchData({
+  const { data, isLoading } = useFetchData({
     queryKey: ["plants"],
     apiUrl: "/getPlantById",
     parameter: { plantId: id },
   });
 
   const nav = useNavigate();
+
   useEffect(() => {
-    if (data == null) {
-      nav("/");
-    }
-  }, [data]);
+    if (!isLoading && data == null) nav("/");
+  }, [data, isLoading]);
 
-
-  if (!data) return <>Loading...</>;
+  if (!data || isLoading) return <>loading...</>;
 
   return (
     <>
-      <Info />
-      <Slider />
+      <Info {...data} />
+      <Slider plantTypeId={data.type} />
       <Comments />
       <Footer />
     </>

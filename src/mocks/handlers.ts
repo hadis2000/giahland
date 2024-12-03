@@ -1,5 +1,5 @@
 import { http, HttpResponse } from "msw";
-import { plants, plantType } from "../../data/db.json";
+import { plants, plantType, soilType, vaseType } from "../../data/db.json";
 
 export const handlers = [
   // Intercept "GET https://example.com/user" requests...
@@ -38,8 +38,44 @@ export const handlers = [
     const url = new URL(request.url);
     const plantId = url.searchParams.get("plantId");
 
-    const plant = plantId ? plants.find((p) => p.id === +plantId) : "null";
+    const plant =
+      plantId && plants.find((p) => p.id === +plantId)
+        ? plants.find((p) => p.id === +plantId)
+        : null;
 
     return HttpResponse.json(plant);
+  }),
+
+  http.get("/getPlantTypeById", ({ request }) => {
+    const url = new URL(request.url);
+    const plantTypeId = url.searchParams.get("plantTypeId");
+
+    const plantTypeTitle = plantTypeId
+      ? plantType.find((p) => p.plantTypeId === plantTypeId)?.plantTypeTitle
+      : null;
+
+    return HttpResponse.json(plantTypeTitle);
+  }),
+
+  http.get("/getVaseTypeById", ({ request }) => {
+    const url = new URL(request.url);
+    const vaseId = url.searchParams.get("vaseId");
+
+    const vaseTitle = vaseId
+      ? vaseType.find((p) => p.vaseId === vaseId)?.vaseTitle
+      : null;
+
+    return HttpResponse.json(vaseTitle);
+  }),
+
+  http.get("/getSoilTypeById", ({ request }) => {
+    const url = new URL(request.url);
+    const soilId = url.searchParams.get("soilId");
+
+    const soilTitle = soilId
+      ? soilType.find((p) => p.soilId === soilId)?.soilTitle
+      : null;
+
+    return HttpResponse.json(soilTitle);
   }),
 ];

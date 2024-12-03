@@ -26,6 +26,9 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     // هندل خطاها
+    if (error.response?.status === 304) {
+      return null;
+    }
     if (error.response?.status === 401) {
       // ریدایرکت به صفحه لاگین یا حذف توکن
       localStorage.removeItem('token');

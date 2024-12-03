@@ -1,8 +1,9 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import Btn from "../../../../compopnent/button";
 import { StoreOutlined } from "@mui/icons-material";
+import { plantType } from "../../../../model";
 
-const Price = () => {
+const Price = ({ price }: Pick<plantType, "price">) => {
   return (
     <Box
       sx={{
@@ -43,7 +44,7 @@ const Price = () => {
       <Divider />
       <Stack direction="row" justifyContent="space-between" spacing={1}>
         <Typography>قیمت:</Typography>
-        <Typography>۵۶۰/۰۰۰ تومان</Typography>
+        <Typography>{price} تومان</Typography>
       </Stack>
       <Btn sx={{ px: { lg: "60px" } }}>افزودن به سبد خرید</Btn>
     </Box>
