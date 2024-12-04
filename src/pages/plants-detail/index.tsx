@@ -13,7 +13,7 @@ const PlantsDetails = () => {
 
   const { id } = useParams();
   const { data, isLoading } = useFetchData({
-    queryKey: ["plants"],
+    queryKey: ["plants", id],
     apiUrl: "/getPlantById",
     parameter: { plantId: id },
   });
