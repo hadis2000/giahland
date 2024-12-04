@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import Image from "../../../compopnent/image";
 
 const ResImage = () => {
   return (
@@ -13,7 +14,7 @@ const ResImage = () => {
         justifyContent: "center",
       }}
     >
-      <img
+      <Image
         width="300px"
         height="300px"
         src="/img/hero_img.jfif"

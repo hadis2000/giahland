@@ -2,6 +2,7 @@ import { Home } from "@mui/icons-material";
 import { Box, IconButton, Typography } from "@mui/material";
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
+import Image from "../image";
 
 const LogRegLayout = ({
   children,
@@ -78,7 +79,12 @@ const LogRegLayout = ({
           <Home fontSize="large" />
         </IconButton>
 
-        <img width="100%" height="100%" loading="lazy" src="/img/log-reg.png" />
+        <Image
+          width="100%"
+          height="100%"
+          loading="lazy"
+          src="/img/log-reg.png"
+        />
       </Box>
     </Box>
   );

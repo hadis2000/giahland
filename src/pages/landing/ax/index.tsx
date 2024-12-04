@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import Image from "../../../compopnent/image";
 
 const Ax = () => {
   return (
@@ -18,7 +19,7 @@ const Ax = () => {
           height: { md: "240px", xs: "120px" },
         }}
       >
-        <img width="150%" loading="lazy" src="/img/1.png" />
+        <Image width="150%" loading="lazy" src="/img/1.png" />
       </Box>
       <Box
         sx={{
@@ -28,7 +29,7 @@ const Ax = () => {
           height: { md: "240px", xs: "120px" },
         }}
       >
-        <img width="150%" loading="lazy" src="/img/2.png" />
+        <Image width="150%" loading="lazy" src="/img/2.png" />
       </Box>
     </Box>
   );

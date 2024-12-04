@@ -1,18 +1,7 @@
 import { MoreHorizOutlined } from "@mui/icons-material";
 import { Box, ImageList, ImageListItem, Stack, styled } from "@mui/material";
 import { plantType } from "../../../../model";
-
-const itemData = [
-  {
-    img: "/img/shop/2.png",
-  },
-  {
-    img: "/img/shop/3.png",
-  },
-  {
-    img: "/img/shop/4.png",
-  },
-];
+import Image from "../../../../compopnent/image";
 
 const StyledImageListItem = styled(ImageListItem)(({ theme }) => ({
   border: "1px solid",
@@ -27,14 +16,11 @@ const StyledImageListItem = styled(ImageListItem)(({ theme }) => ({
 const Gallery = ({ img }: Pick<plantType, "img">) => {
   return (
     <Stack width="100%">
-      <img
-        width="400px"
-        src={img && img.length > 0 ? img[0] : "/img/empty.jpg"}
-      />
+      <Image width="400px" src={img && img[0]} />
 
       <ImageList cols={4}>
-        {itemData.map((item) => (
-          <StyledImageListItem key={item.img}>
+        {img?.slice(1, 4).map((it) => (
+          <StyledImageListItem key={it}>
             <Box
               sx={{
                 width: "80px",
@@ -44,7 +30,7 @@ const Gallery = ({ img }: Pick<plantType, "img">) => {
                 borderRadius: "4px",
               }}
             >
-              <img width="100%" src={`${item.img}`} loading="lazy" />
+              <Image width="100%" height="100%" src={`${it}`} loading="lazy" />
             </Box>
           </StyledImageListItem>
         ))}
@@ -63,7 +49,7 @@ const Gallery = ({ img }: Pick<plantType, "img">) => {
           >
             <MoreHorizOutlined />
           </Box>
-          <img width="100%" src={`/img/shop/4.png`} loading="lazy" />
+          <Image width="100%" src={`/img/shop/4.png`} loading="lazy" />
         </StyledImageListItem>
       </ImageList>
     </Stack>

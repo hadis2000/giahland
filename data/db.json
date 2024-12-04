@@ -25,10 +25,10 @@
       "price": "560000",
       "img": [
         "/img/shop/1.png",
+        "/img/shop/2.png",
         "/img/shop/3.png",
         "/img/shop/4.png",
-        "/img/shop/5.png",
-        "/img/shop/5.png"
+        "/img/shop/4.png"
       ],
       "vaseId": "11",
       "soilId": "21",

@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import Counter from "../../../../compopnent/counter";
+import Image from "../../../../compopnent/image";
 
 const Item = () => {
   return (
@@ -13,7 +14,7 @@ const Item = () => {
           alignItems: "center",
         }}
       >
-        <img width="100%" src="/img/shop/1.png" />
+        <Image width="100%" src="/img/shop/1.png" />
       </Box>
       <Box
         sx={{

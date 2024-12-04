@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Btn from "../../../../compopnent/button";
 import { ArrowBack } from "@mui/icons-material";
+import Image from "../../../../compopnent/image";
 
 const Item = ({
   imgSrc,
@@ -20,7 +21,7 @@ const Item = ({
         overflow: "hidden",
       }}
     >
-      <img width="150%" loading="lazy" src={imgSrc} />
+      <Image width="150%" loading="lazy" src={imgSrc} />
       <Box
         sx={{ position: "absolute", inset: 0, backgroundColor: "#00000088" }}
       >

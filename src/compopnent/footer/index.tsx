@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Item from "./item";
 import { Instagram, LinkedIn, Telegram } from "@mui/icons-material";
+import Image from "../image";
 
 const Footer = () => {
   return (
@@ -82,7 +83,7 @@ const Footer = () => {
               </Box>
             </Box>
             <Box>
-              <img src={`/img/enamad.png`} loading="lazy" />
+              <Image src={`/img/enamad.png`} loading="lazy" />
             </Box>
           </Box>
         </Box>
