@@ -16,19 +16,19 @@ const PlantsInfo = ({
   type,
 }: PlantInfoType) => {
   const { data: vaseTitle } = useFetchData({
-    queryKey: ["VaseType"],
+    queryKey: ["VaseType",vaseId],
     apiUrl: "/getVaseTypeById",
     parameter: { vaseId: vaseId },
   });
 
   const { data: soilTitle } = useFetchData({
-    queryKey: ["soilType"],
+    queryKey: ["soilType",soilId],
     apiUrl: "/getSoilTypeById",
     parameter: { soilId: soilId },
   });
 
   const { data: plantTypeTitle } = useFetchData({
-    queryKey: ["plantType"],
+    queryKey: ["plantType",type],
     apiUrl: "/getPlantTypeById",
     parameter: { plantTypeId: type },
   });

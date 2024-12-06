@@ -7,13 +7,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFetchData } from "../../utils/apiService";
 
 const PlantsDetails = () => {
+  const { id } = useParams();
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [id]);
 
-  const { id } = useParams();
   const { data, isLoading } = useFetchData({
-    queryKey: ["plants", id],
+    queryKey: ["plantsDetail", id],
     apiUrl: "/getPlantById",
     parameter: { plantId: id },
   });

@@ -16,7 +16,7 @@ export type SliderPopType = {
 const Slider = ({ plantTypeTitle, plantTypeId }: SliderPopType) => {
   const { isMobile, isLaptop, isTablet } = useResponsive();
   const { data, error, isLoading } = useFetchData({
-    queryKey: ["plants", plantTypeId],
+    queryKey: ["plantsType", plantTypeId],
     apiUrl: "/getPlants",
     parameter: { plantTypeId: plantTypeId },
   });

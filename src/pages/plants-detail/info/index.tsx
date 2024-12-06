@@ -24,7 +24,7 @@ const Info = ({ img, price, ...restInfo }: plantType) => {
         // mt: 8,
       }}
     >
-      <Gallery img={img} />
+      <Gallery key={restInfo.id} img={img} />
       {!isMobile && <PlantsInfo {...restInfo} />}
 
       <Box
