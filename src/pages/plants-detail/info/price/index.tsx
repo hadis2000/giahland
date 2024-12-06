@@ -17,6 +17,7 @@ const Price = ({ price }: Pick<plantType, "price">) => {
         gap: "20px",
         fontSize: "16px",
         fontWeight: "500",
+        width:"100%"
       }}
     >
       <Typography>فروشنده</Typography>
