@@ -15,6 +15,8 @@ export const handlers = [
     const url = new URL(request.url);
     const plantTypeId = url.searchParams.get("plantTypeId");
 
+    const text = url.searchParams.get("text");
+
     // if (!plantTypeId) {
     //   return new HttpResponse(null, { status: 404 })
     // }
@@ -27,6 +29,16 @@ export const handlers = [
       plants.filter((it) => it.type === plantTypeId).length
     ) {
       filteredPlant = plants.filter((it) => it.type === plantTypeId);
+    }
+
+    if (
+      text &&
+      text !== undefined &&
+      plants.filter((it) => it.title.includes(text)).length
+    ) {
+      filteredPlant = plants.filter((it) => it.title.includes(text));
+    } else {
+      filteredPlant = [];
     }
 
     return HttpResponse.json(filteredPlant);

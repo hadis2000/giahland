@@ -16,19 +16,14 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import {
-  Close,
-  Login,
-  Search,
-  ShoppingCartCheckout,
-} from "@mui/icons-material";
+import { Close, Login, ShoppingCartCheckout } from "@mui/icons-material";
 import Btn from "../button";
 import IconBtn from "../icon-btn";
-import Input from "../input";
 import { useLocation, useNavigate } from "react-router-dom";
 import Info from "../info";
 import ExitBtn from "../exit-btn";
 import PanelMenu from "../panel-menu";
+import SearchMd from "./searchMd";
 
 const pages = [
   { title: "صفحه اصلی", url: "/" },
@@ -219,23 +214,11 @@ function Header() {
             >
               <ShoppingCartCheckout />
             </IconBtn>
-            <IconBtn sx={{ display: { xs: "none", md: "flex" } }} label="جستجو">
-              <Search />
-            </IconBtn>
+
+            <SearchMd />
           </Box>
         </Toolbar>
       </Container>
-      <Input
-        inputSx={{
-          display: { xs: "flex", md: "none", width: "93%" },
-          backgroundColor: "neutral.3",
-          mb: 2,
-          mx: "auto",
-          borderColor: "neutral.3",
-        }}
-        startAdornment={<Search />}
-        placeholder="جستجو گیاه"
-      />
     </AppBar>
   );
 }
