@@ -3,6 +3,7 @@ import axiosInstance from "./axiosConfig";
 import { apiParams, useFetchDataType } from "./model";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { QueryKey } from "@tanstack/react-query";
+import { useNotifications } from "@toolpad/core/useNotifications";
 
 // get api
 export const fetchData = async ({ apiUrl, parameter }: apiParams) => {
@@ -36,6 +37,8 @@ export const usePostData = (
 ) => {
   const queryClient = useQueryClient();
 
+  const notifications = useNotifications();
+
   return useMutation({
     mutationFn: postData,
     onSuccess: (data) => {
@@ -44,7 +47,10 @@ export const usePostData = (
         queryClient.invalidateQueries({ queryKey: props.queryKey });
     },
     onError: (error) => {
-      console.error("Error posting data:", error);
+      notifications.show(error.message, {
+        autoHideDuration: 3000,
+        severity: "error",
+      });
     },
   });
 };

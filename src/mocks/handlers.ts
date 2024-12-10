@@ -36,17 +36,16 @@ export const handlers = [
       );
     }
 
-    return HttpResponse.json({ error: "Invalid credentials" }, { status: 401 });
+    return HttpResponse.json(
+      { error: "احراز هویت انجام نشده" },
+      { status: 401 }
+    );
   }),
   http.get("/getPlants", ({ request }) => {
     const url = new URL(request.url);
     const plantTypeId = url.searchParams.get("plantTypeId");
 
     const text = url.searchParams.get("text");
-
-    // if (!plantTypeId) {
-    //   return new HttpResponse(null, { status: 404 })
-    // }
 
     let filteredPlant = plants;
 

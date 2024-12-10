@@ -9,12 +9,19 @@ import { useDispatch } from "react-redux";
 import { usePostData } from "../../utils/apiService";
 import { loginSuccess } from "../../features/auth/authSlice";
 
+import { useNotifications } from "@toolpad/core/useNotifications";
+
 const Form = () => {
   const dispatch = useDispatch();
+  const notifications = useNotifications();
 
   const { mutate: postData } = usePostData({
     successFunc: (data) => {
       dispatch(loginSuccess(data));
+      notifications.show(`سلام حدیثه! خوش آمدی  :) `, {
+        autoHideDuration: 3000,
+        severity: "success",
+      });
     },
   });
 

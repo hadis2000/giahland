@@ -11,6 +11,9 @@ import Rtl from "./cache";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
+import { NotificationsProvider } from "@toolpad/core/useNotifications";
+
+
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
 async function enableMocking() {
@@ -27,7 +30,9 @@ enableMocking().then(() => {
       <QueryClientProvider client={queryClient}>
         <Rtl>
           <ThemeProvider theme={theme}>
-            <App />
+            <NotificationsProvider>
+              <App />
+            </NotificationsProvider>
             <ReactQueryDevtools initialIsOpen />
           </ThemeProvider>
         </Rtl>
