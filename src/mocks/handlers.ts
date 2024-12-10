@@ -1,4 +1,5 @@
 import { http, HttpResponse } from "msw";
+
 import { plants, plantType, soilType, vaseType } from "../../data/db.json";
 
 export const handlers = [
@@ -11,6 +12,32 @@ export const handlers = [
   //     lastName: "Maverick",
   //   });
   // }),
+  http.post("/login", async ({ request }) => {
+    const body = (await request.json()) as
+      | { phone: string; password: string }
+      | undefined;
+
+    const phone = body?.phone;
+    const password = body?.password;
+
+    if (phone === "09111111111" && password === "123456") {
+      return HttpResponse.json(
+        {
+          user: {
+            id: "1",
+            name: "hadiseh",
+            email: "hadise@gmail.com",
+            role: "user",
+          },
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoiaGFkaXNlaCIsImVtYWlsIjoiaGFkaXNlQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.WEQsWho5NX0NDRYA2yLPpRMwmb7eCMRhILVsnKsOfJQ",
+        },
+        { status: 200 }
+      );
+    }
+
+    return HttpResponse.json({ error: "Invalid credentials" }, { status: 401 });
+  }),
   http.get("/getPlants", ({ request }) => {
     const url = new URL(request.url);
     const plantTypeId = url.searchParams.get("plantTypeId");
@@ -23,7 +50,6 @@ export const handlers = [
 
     let filteredPlant = plants;
 
-    
     if (
       text &&
       text !== undefined &&
@@ -41,7 +67,6 @@ export const handlers = [
     ) {
       filteredPlant = plants.filter((it) => it.type === plantTypeId);
     }
-
 
     return HttpResponse.json(filteredPlant);
   }),
