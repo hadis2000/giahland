@@ -1,15 +1,27 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 import { plantType } from "../../model";
+import { useNavigate } from "react-router-dom";
 
 const PlantItem = ({
   img,
   title,
   price,
-}: Pick<plantType, "title" | "price" | "img" | "id">) => {
+  id,
+  onClose,
+}: { onClose?: () => void } & Pick<
+  plantType,
+  "title" | "price" | "img" | "id"
+>) => {
+  const nav = useNavigate();
+
   return (
     <ListItem
       divider
       sx={{ width: { sm: "45%", xs: "95%" }, cursor: "pointer" }}
+      onClick={() => {
+        nav(`/plant-detail/${id}`);
+        if (onClose) onClose();
+      }}
     >
       <ListItemAvatar>
         <Avatar alt={title} src={img && img[0]} />

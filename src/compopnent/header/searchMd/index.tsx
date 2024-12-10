@@ -96,7 +96,9 @@ const SearchMd = () => {
               }}
             >
               {findPlants && findPlants.length ? (
-                findPlants.map((plant) => <PlantItem {...plant} />)
+                findPlants.map((plant) => (
+                  <PlantItem onClose={handleClose} {...plant} />
+                ))
               ) : (
                 <>گیاهی یافت نشد</>
               )}
