@@ -23,14 +23,7 @@ export const handlers = [
 
     let filteredPlant = plants;
 
-    if (
-      plantTypeId &&
-      plantTypeId !== undefined &&
-      plants.filter((it) => it.type === plantTypeId).length
-    ) {
-      filteredPlant = plants.filter((it) => it.type === plantTypeId);
-    }
-
+    
     if (
       text &&
       text !== undefined &&
@@ -40,6 +33,15 @@ export const handlers = [
     } else {
       filteredPlant = [];
     }
+
+    if (
+      plantTypeId &&
+      plantTypeId !== undefined &&
+      plants.filter((it) => it.type === plantTypeId).length
+    ) {
+      filteredPlant = plants.filter((it) => it.type === plantTypeId);
+    }
+
 
     return HttpResponse.json(filteredPlant);
   }),
