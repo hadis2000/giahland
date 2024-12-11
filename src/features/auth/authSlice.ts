@@ -11,8 +11,8 @@ export type UserStateType = {
 };
 
 const initialState: UserStateType = {
-  user: null,
-  token: null,
+  user: JSON.parse(localStorage.getItem("user") || "null"),
+  token: localStorage.getItem("token"),
 };
 
 const authSlice = createSlice({

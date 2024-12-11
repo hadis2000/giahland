@@ -15,26 +15,39 @@ import Test from "./test";
 // store
 import {store} from "./store"
 import {Provider} from 'react-redux'
+import PrivateRoute from "./compopnent/private-route";
 
 function App() {
   return (
     <Provider store={store}>
       <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route path="/" element={<Landing />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="shopping-card" element={<ShoppingCard />} />
-        <Route path="/panel" element={<Panel />}>
-          <Route path="" element={<UserInfo />} />
-          <Route path="doctor" element={<DoctorPlants />} />
-          <Route path="message" element={<Message />} />
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="shopping-card" element={<ShoppingCard />} />
+
+          {/* استفاده از PrivateRoute برای محافظت از مسیرهای panel */}
+          <Route
+            path="/panel/*"
+            element={<PrivateRoute element={<Panel />} restricted={true} />}
+          >
+            <Route path="" element={<UserInfo />} />
+            <Route path="doctor" element={<DoctorPlants />} />
+            <Route path="message" element={<Message />} />
+          </Route>
+
+          <Route path="plant-detail/:id" element={<PlantsDetails />} />
+          <Route path="/test" element={<Test />} />
         </Route>
-        <Route path="plant-detail/:id" element={<PlantsDetails />} />
-        <Route path="/test" element={<Test />} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
+        <Route
+          path="/login"
+          element={<PrivateRoute element={<Login />} restricted={false} />}
+        />
+        <Route
+          path="/register"
+          element={<PrivateRoute element={<Register />} restricted={false} />}
+        />
+      </Routes>
     </Provider>
   );
 }
