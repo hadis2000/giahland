@@ -10,15 +10,18 @@ import { usePostData } from "../../utils/apiService";
 import { loginSuccess } from "../../features/auth/authSlice";
 
 import { useNotifications } from "@toolpad/core/useNotifications";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const dispatch = useDispatch();
   const notifications = useNotifications();
+  const nav = useNavigate();
 
   const { mutate: postData } = usePostData({
     successFunc: (data) => {
       dispatch(loginSuccess(data));
-      notifications.show(`سلام حدیثه! خوش آمدی  :) `, {
+      nav("/panel");
+      notifications.show(`سلام ${data?.user?.name}! خوش آمدی  :) `, {
         autoHideDuration: 3000,
         severity: "success",
       });

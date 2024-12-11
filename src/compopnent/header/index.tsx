@@ -19,11 +19,13 @@ import {
 import { Close, Login, ShoppingCartCheckout } from "@mui/icons-material";
 import Btn from "../button";
 import IconBtn from "../icon-btn";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Info from "../info";
 import ExitBtn from "../exit-btn";
 import PanelMenu from "../panel-menu";
 import SearchMd from "./searchMd";
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
 
 const pages = [
   { title: "صفحه اصلی", url: "/" },
@@ -41,11 +43,10 @@ function Header() {
     setAnchorElNav(null);
   };
 
-  const { pathname } = useLocation();
-
-  const isPanel = pathname.includes("panel");
-
   const nav = useNavigate();
+
+  const { user, token } = useSelector((state: RootState) => state.auth);
+  const isPanel = token;
 
   return (
     <AppBar
@@ -169,6 +170,7 @@ function Header() {
           >
             {isPanel ? (
               <Box
+                onClick={() => nav("/panel")}
                 sx={{
                   display: "flex",
                   gap: 1,
@@ -177,6 +179,7 @@ function Header() {
                   fontWeight: 400,
                   fontSize: "18px",
                   alignItems: "center",
+                  cursor: "pointer",
                 }}
               >
                 <Avatar alt="حدیثه حسینی" src="" />
@@ -184,7 +187,7 @@ function Header() {
                   component="span"
                   sx={{ display: { md: "inline-block", xs: "none" } }}
                 >
-                  سلام؛ حدیثه
+                  سلام؛ {user?.name}
                 </Box>
               </Box>
             ) : (
