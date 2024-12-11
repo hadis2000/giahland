@@ -22,7 +22,7 @@ const Form = () => {
       dispatch(loginSuccess(data));
       nav("/panel");
       notifications.show(`سلام ${data?.user?.name}! خوش آمدی  :) `, {
-        autoHideDuration: 3000,
+        autoHideDuration: 2000,
         severity: "success",
       });
     },
