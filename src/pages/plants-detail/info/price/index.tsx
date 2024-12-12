@@ -2,8 +2,20 @@ import { Box, Divider, Stack, Typography } from "@mui/material";
 import Btn from "../../../../compopnent/button";
 import { StoreOutlined } from "@mui/icons-material";
 import { plantType } from "../../../../model";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../../features/shopping-cart/cartSlice";
 
-const Price = ({ price }: Pick<plantType, "price">) => {
+const Price = ({
+  price,
+  id,
+  title,
+}: Pick<plantType, "price" | "id" | "title">) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    if (id && title) dispatch(addItem({ id, title, quantity: 1 }));
+  };
+
   return (
     <Box
       sx={{
@@ -17,7 +29,7 @@ const Price = ({ price }: Pick<plantType, "price">) => {
         gap: "20px",
         fontSize: "16px",
         fontWeight: "500",
-        width:"100%"
+        width: "100%",
       }}
     >
       <Typography>فروشنده</Typography>
@@ -47,7 +59,9 @@ const Price = ({ price }: Pick<plantType, "price">) => {
         <Typography>قیمت:</Typography>
         <Typography>{price} تومان</Typography>
       </Stack>
-      <Btn sx={{ px: { lg: "60px" } }}>افزودن به سبد خرید</Btn>
+      <Btn onClick={handleAddToCart} sx={{ px: { lg: "60px" } }}>
+        افزودن به سبد خرید
+      </Btn>
     </Box>
   );
 };

@@ -14,7 +14,7 @@ const Info = ({ img, price, ...restInfo }: plantType) => {
         padding: 2,
         gap: 2,
         display: "flex",
-        flexDirection:{md:"row",xs:"column"},
+        flexDirection: { md: "row", xs: "column" },
         justifyContent: "space-between",
         alignItems: "center",
         // mt: 8,
@@ -27,7 +27,7 @@ const Info = ({ img, price, ...restInfo }: plantType) => {
         width="100%"
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Price price={price} />
+        <Price price={price} id={restInfo.id} title={restInfo.title} />
       </Box>
     </Box>
   );
