@@ -1,8 +1,16 @@
 import { Box } from "@mui/material";
 import Input from "../../../compopnent/input";
 import Btn from "../../../compopnent/button";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
 const CalcShop = () => {
+
+  const cartItem=useSelector((sate:RootState)=>sate.cart.items)
+
+  const countItem=cartItem.reduce((sum, item) => sum + item.quantity, 0)
+
+
   return (
     <Box
       sx={{
@@ -19,11 +27,11 @@ const CalcShop = () => {
     >
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <span>تعداد گیاه:</span>
-        <span>1</span>
+        <span>{countItem}</span>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <span>مجموع سبد خرید: </span>
-        <span>۵۶۰/۰۰۰ تومان</span>
+        <span>- تومان</span>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <span>ارسال توسط:</span>
