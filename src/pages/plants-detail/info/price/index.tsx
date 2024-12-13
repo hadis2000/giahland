@@ -2,17 +2,46 @@ import { Box, Divider, Stack, Typography } from "@mui/material";
 import Btn from "../../../../compopnent/button";
 import { StoreOutlined } from "@mui/icons-material";
 import { plantType } from "../../../../model";
-import { useDispatch } from "react-redux";
-import { addItem } from "../../../../features/shopping-cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem } from "../../../../features/shopping-cart/cartSlice";
+import { useNotifications } from "@toolpad/core/useNotifications";
+import { RootState } from "../../../../store";
+import { useState } from "react";
+import Counter from "../../../../compopnent/counter";
 
 const Price = ({
   price,
   id,
 }: Pick<plantType, "price" | "id">) => {
+
   const dispatch = useDispatch();
+  const notif=useNotifications();
+
+  const [qty, setQty] = useState<number>(0);
+
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const isInCart=cartItems?.find((it)=>it.id===id)
 
   const handleAddToCart = () => {
-    if (id) dispatch(addItem({ id, quantity: 1 }));
+    if (id) {
+      dispatch(addItem({ id, quantity: qty }))
+      setQty(0)
+      notif.show("با موفقیت به سبد خرید شما اضافه شد",{
+        autoHideDuration:2000,
+        severity:"success"
+      })
+    }
+  };
+
+  const handleRemove = () => {
+    if(id){
+    dispatch(removeItem(id));
+    notif.show("با موفقیت از سبد خرید شما حذف شد",{
+      autoHideDuration:2000,
+      severity:"error"
+    })
+
+    }
   };
 
   return (
@@ -58,9 +87,23 @@ const Price = ({
         <Typography>قیمت:</Typography>
         <Typography>{price} تومان</Typography>
       </Stack>
-      <Btn onClick={handleAddToCart} sx={{ px: { lg: "60px" } }}>
+
+      <Counter 
+        id={id} 
+        num={qty} 
+        onIncrease={() => setQty((c) => c + 1)} 
+        onDecrease={() => setQty((c) => (c > 0 ? c - 1 : c))}
+        disabled={isInCart?true:false}
+       />
+
+      {isInCart?
+      <Btn onClick={handleRemove} sx={{ px: { lg: "60px" },backgroundColor:"red" }}>
+      حذف از سبد خرید
+    </Btn>
+      :<Btn onClick={handleAddToCart} sx={{ px: { lg: "60px" } }}>
         افزودن به سبد خرید
-      </Btn>
+      </Btn>}
+      
     </Box>
   );
 };

@@ -8,7 +8,14 @@ import { plantType } from "../../model";
 import { useDispatch } from "react-redux";
 import { removeItem,updateQuantity } from "../../features/shopping-cart/cartSlice";
 
-const Counter = ({ num ,id}: { num: number }&Pick<plantType,"id">) => {
+
+export type counterPropType={ num: number,
+  onIncrease?:()=>void,
+  onDecrease?:()=>void,
+  disabled?:boolean;
+ }&Pick<plantType,"id">
+
+const Counter = ({ num ,id,onDecrease,onIncrease,disabled}:counterPropType ) => {
 
   const dispatch = useDispatch();
 
@@ -38,9 +45,11 @@ const Counter = ({ num ,id}: { num: number }&Pick<plantType,"id">) => {
         justifyContent: "space-evenly",
         alignItems: "center",
         mx: "auto",
+        opacity:disabled?'50%':"",
+        cursor:disabled?'not-allowed':""
       }}
     >
-      <IconButton color="primary" onClick={handleIncrease}>
+      <IconButton color="primary" onClick={onIncrease?onIncrease:handleIncrease}>
         <AddOutlined />
       </IconButton>
 
@@ -58,15 +67,17 @@ const Counter = ({ num ,id}: { num: number }&Pick<plantType,"id">) => {
         <Typography>تعداد</Typography>
       </Box>
 
-      {num > 1 ? (
+      {(num > 1||onIncrease&&onDecrease) ? (
         <IconButton
+        disabled={disabled}
           color="error"
-          onClick={handleDecrease}
+          onClick={onDecrease?onDecrease:handleDecrease}
         >
           <RemoveOutlined />
         </IconButton>
       ) : (
         <IconButton
+        disabled={disabled}
           color="error"
           onClick={handleRemove}
         >
