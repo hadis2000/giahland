@@ -101,7 +101,7 @@ const Price = ({
       <Btn onClick={handleRemove} sx={{ px: { lg: "60px" },backgroundColor:"red" }}>
       حذف از سبد خرید
     </Btn>
-      :<Btn onClick={handleAddToCart} sx={{ px: { lg: "60px" } }}>
+      :<Btn disabled={qty<1} onClick={handleAddToCart} sx={{ px: { lg: "60px" } }}>
         افزودن به سبد خرید
       </Btn>}
       
