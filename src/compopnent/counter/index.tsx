@@ -49,7 +49,7 @@ const Counter = ({ num ,id,onDecrease,onIncrease,disabled}:counterPropType ) => 
         cursor:disabled?'not-allowed':""
       }}
     >
-      <IconButton color="primary" onClick={onIncrease?onIncrease:handleIncrease}>
+      <IconButton disabled={disabled} color="primary" onClick={onIncrease?onIncrease:handleIncrease}>
         <AddOutlined />
       </IconButton>
 

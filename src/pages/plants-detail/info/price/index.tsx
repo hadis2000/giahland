@@ -17,15 +17,15 @@ const Price = ({
   const dispatch = useDispatch();
   const notif=useNotifications();
 
-  const [qty, setQty] = useState<number>(0);
 
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const isInCart=cartItems?.find((it)=>it.id===id)
 
+  const [qty, setQty] = useState<number>(isInCart?.quantity||0);
+
   const handleAddToCart = () => {
     if (id) {
       dispatch(addItem({ id, quantity: qty }))
-      setQty(0)
       notif.show("با موفقیت به سبد خرید شما اضافه شد",{
         autoHideDuration:2000,
         severity:"success"
@@ -36,6 +36,7 @@ const Price = ({
   const handleRemove = () => {
     if(id){
     dispatch(removeItem(id));
+    setQty(0);
     notif.show("با موفقیت از سبد خرید شما حذف شد",{
       autoHideDuration:2000,
       severity:"error"
