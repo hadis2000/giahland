@@ -8,12 +8,11 @@ import { addItem } from "../../../../features/shopping-cart/cartSlice";
 const Price = ({
   price,
   id,
-  title,
-}: Pick<plantType, "price" | "id" | "title">) => {
+}: Pick<plantType, "price" | "id">) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    if (id && title) dispatch(addItem({ id, title, quantity: 1 }));
+    if (id) dispatch(addItem({ id, quantity: 1 }));
   };
 
   return (

@@ -1,7 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import Item from "./item";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
 const ShopList = () => {
+  
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  
   return (
     <Box
       sx={{
@@ -25,11 +30,9 @@ const ShopList = () => {
           overflow: "auto",
         }}
       >
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        {cartItems.map(item => (
+          <Item {...item} />
+        ))}
       </Box>
     </Box>
   );

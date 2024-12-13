@@ -27,7 +27,7 @@ const Info = ({ img, price, ...restInfo }: plantType) => {
         width="100%"
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Price price={price} id={restInfo.id} title={restInfo.title} />
+        <Price price={price} id={restInfo.id} />
       </Box>
     </Box>
   );

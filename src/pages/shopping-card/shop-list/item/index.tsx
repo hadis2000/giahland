@@ -1,8 +1,19 @@
 import { Box, Typography } from "@mui/material";
 import Counter from "../../../../compopnent/counter";
 import Image from "../../../../compopnent/image";
+import { CartItemType } from "../../../../features/shopping-cart/cartSlice";
+import { useFetchData } from "../../../../utils/apiService";
 
-const Item = () => {
+const Item = ({quantity,id}:CartItemType) => {
+
+  const { data, isLoading } = useFetchData({
+    queryKey: ["plantsDetail", id],
+    apiUrl: "/getPlantById",
+    parameter: { plantId: id },
+  });
+
+  if (!data || isLoading) return <>loading...</>;
+  
   return (
     <Box sx={{ display: "flex" }}>
       <Box
@@ -14,7 +25,7 @@ const Item = () => {
           alignItems: "center",
         }}
       >
-        <Image width="100%" src="/img/shop/1.png" />
+        <Image width="100%" src={data?.img[0]} />
       </Box>
       <Box
         sx={{
@@ -22,6 +33,7 @@ const Item = () => {
           flexDirection: "column",
           justifyContent: "center",
           gap: "5px",
+          height:"200px",
         }}
       >
         <Typography
@@ -30,10 +42,7 @@ const Item = () => {
           fontSize="19px"
           fontWeight="600"
         >
-          گیاه طبیعی یوکا
-        </Typography>
-        <Typography fontSize="17px" fontWeight="400">
-          فلاور گاردن
+          {data.title}
         </Typography>
 
         <Box
@@ -48,10 +57,10 @@ const Item = () => {
             قیمت:
           </Typography>
           <Typography fontSize="19px" fontWeight="400">
-            ۵۶۰/۰۰۰ تومان
+            {data.price} تومان
           </Typography>
         </Box>
-        <Counter num={1} />
+        <Counter id={id} num={quantity} />
       </Box>
     </Box>
   );

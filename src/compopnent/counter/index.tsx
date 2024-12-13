@@ -4,10 +4,28 @@ import {
   RemoveOutlined,
 } from "@mui/icons-material";
 import { Box, IconButton, Typography } from "@mui/material";
-import { useState } from "react";
+import { plantType } from "../../model";
+import { useDispatch } from "react-redux";
+import { removeItem,updateQuantity } from "../../features/shopping-cart/cartSlice";
 
-const Counter = ({ num }: { num: number }) => {
-  const [count, setCount] = useState<number>(num);
+const Counter = ({ num ,id}: { num: number }&Pick<plantType,"id">) => {
+
+  const dispatch = useDispatch();
+
+  const handleRemove = () => {
+    if(id)
+    dispatch(removeItem(id));
+  };
+
+  const handleIncrease = () => {
+    if(id)
+    dispatch(updateQuantity({ id, operation: 'increase' }));
+  };
+
+  const handleDecrease = () => {
+    if(id)
+    dispatch(updateQuantity({ id, operation: 'decrease' }));
+  };
 
   return (
     <Box
@@ -22,7 +40,7 @@ const Counter = ({ num }: { num: number }) => {
         mx: "auto",
       }}
     >
-      <IconButton color="primary" onClick={() => setCount((c) => c + 1)}>
+      <IconButton color="primary" onClick={handleIncrease}>
         <AddOutlined />
       </IconButton>
 
@@ -36,21 +54,21 @@ const Counter = ({ num }: { num: number }) => {
           fontWeight: "600",
         }}
       >
-        <Typography>{count}</Typography>
+        <Typography>{num}</Typography>
         <Typography>تعداد</Typography>
       </Box>
 
-      {count > 1 ? (
+      {num > 1 ? (
         <IconButton
           color="error"
-          onClick={() => setCount((c) => (c > 1 ? c - 1 : c))}
+          onClick={handleDecrease}
         >
           <RemoveOutlined />
         </IconButton>
       ) : (
         <IconButton
           color="error"
-          onClick={() => setCount((c) => (c > 1 ? c - 1 : c))}
+          onClick={handleRemove}
         >
           <DeleteForeverOutlined />
         </IconButton>
