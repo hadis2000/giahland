@@ -182,7 +182,7 @@ function Header() {
                   cursor: "pointer",
                 }}
               >
-                <Avatar alt="حدیثه حسینی" src="" />
+                <Avatar alt={user?.name} src={user?.img} />
                 <Box
                   component="span"
                   sx={{ display: { md: "inline-block", xs: "none" } }}

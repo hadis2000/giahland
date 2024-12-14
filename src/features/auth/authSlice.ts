@@ -5,6 +5,8 @@ export type UserStateType = {
     id: string;
     name: string;
     email: string;
+    phone: string;
+    img: string;
     role: "user" | "admin";
   } | null;
   token: string | null;

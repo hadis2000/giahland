@@ -28,10 +28,12 @@ export const handlers = [
             id: "1",
             name: "hadiseh",
             email: "hadise@gmail.com",
+            phone: "09111111111",
             role: "user",
+            img: "/img/user/1.jpg",
           },
           token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoiaGFkaXNlaCIsImVtYWlsIjoiaGFkaXNlQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIn0.WEQsWho5NX0NDRYA2yLPpRMwmb7eCMRhILVsnKsOfJQ",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoiaGFkaXNlaCIsImVtYWlsIjoiaGFkaXNlQGdtYWlsLmNvbSIsInBob25lIjoiMDkxMTExMTExMTEiLCJyb2xlIjoidXNlciJ9.oMeqzvN987UZrgwGshu-WrKxKYQhCC2Fb_iLI7cLtOM",
         },
         { status: 200 }
       );

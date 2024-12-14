@@ -1,6 +1,10 @@
 import { Avatar, Box } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const Info = () => {
+  const userInfo = useSelector((state: RootState) => state.auth.user);
+
   return (
     <Box
       sx={{
@@ -10,11 +14,11 @@ const Info = () => {
         justifyContent: "center",
       }}
     >
-      <Avatar alt="حدیثه حسینی" src="" />
+      <Avatar alt={userInfo?.name} src={userInfo?.img} />
       <Box sx={{ width: "100%" }}>
-        <Box sx={{ fontSize: "14px", fontWeight: 500 }}>حدیثه حسینی</Box>
+        <Box sx={{ fontSize: "14px", fontWeight: 500 }}>{userInfo?.name}</Box>
         <Box sx={{ fontSize: "14px", fontWeight: 400, color: "neutral.9" }}>
-          09111111111
+          {userInfo?.phone}
         </Box>
       </Box>
     </Box>
