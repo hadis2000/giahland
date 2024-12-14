@@ -3,13 +3,23 @@ import Input from "../../../compopnent/input";
 import Btn from "../../../compopnent/button";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import { usePostData } from "../../../utils/apiService";
+import { useEffect, useState } from "react";
 
 const CalcShop = () => {
+  const cartItem = useSelector((sate: RootState) => sate.cart.items);
+  const countItem = cartItem.reduce((sum, item) => sum + item.quantity, 0);
+  const [totalPrice, settotalPrice] = useState<number | null>(null);
 
-  const cartItem=useSelector((sate:RootState)=>sate.cart.items)
+  const { mutate: postData } = usePostData({
+    successFunc: (data) => {
+      settotalPrice(data?.totalPrice);
+    },
+  });
 
-  const countItem=cartItem.reduce((sum, item) => sum + item.quantity, 0)
-
+  useEffect(() => {
+    postData({ url: "/countBasket", data: { cartItem } });
+  }, [cartItem]);
 
   return (
     <Box
@@ -31,7 +41,7 @@ const CalcShop = () => {
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <span>مجموع سبد خرید: </span>
-        <span>- تومان</span>
+        <span>{totalPrice} تومان</span>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <span>ارسال توسط:</span>

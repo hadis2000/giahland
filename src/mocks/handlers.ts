@@ -1,6 +1,7 @@
 import { http, HttpResponse } from "msw";
 
 import { plants, plantType, soilType, vaseType } from "../../data/db.json";
+import { CartItemType } from "../features/shopping-cart/cartSlice";
 
 export const handlers = [
   // Intercept "GET https://example.com/user" requests...
@@ -115,5 +116,22 @@ export const handlers = [
       : null;
 
     return HttpResponse.json(soilTitle);
+  }),
+  http.post("/countBasket", async ({ request }) => {
+    const body = (await request.json()) as
+      | { cartItem: CartItemType[] }
+      | undefined;
+
+    const cartItem = body?.cartItem;
+
+    const totalPrice = cartItem?.reduce((total, item) => {
+      const plant = plants.find((p) => p.id === item.id); // پیدا کردن گیاه با id
+      if (plant) {
+        return total + parseInt(plant.price) * item.quantity; // جمع زدن قیمت
+      }
+      return total; // اگر id پیدا نشود، مقدار فعلی را برگرداند
+    }, 0);
+
+    return HttpResponse.json({ totalPrice });
   }),
 ];
