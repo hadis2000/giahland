@@ -1,70 +1,42 @@
-import { Avatar, Box } from "@mui/material";
-import SecLayout from "../component/sec-layout";
 import Btn from "../../../compopnent/button";
-import Input from "../../../compopnent/input";
+import SecLayout from "../component/sec-layout";
+import UserForm from "./user-form";
+import { Avatar, Box } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
+import { useFetchData } from "../../../utils/apiService";
 
 const UserInfo = () => {
+  const userInfo = useSelector((state: RootState) => state.auth.user);
+
+  const { data, isLoading } = useFetchData({
+    queryKey: ["userInfo"],
+    apiUrl: "/getUserInfo",
+    parameter: { userId: userInfo?.id },
+  });
+
+  if (!data || isLoading) return <></>;
+
   return (
-    <>
-      <SecLayout text="مشخصات حساب کاربری">
-        <Box
-          sx={{
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ width: "75px", height: "75px" }} />
-          <Btn size="medium">ویرایش با تصویر جدید</Btn>
-          <Btn size="medium" variant="outlined">
-            حذف تصویر
-          </Btn>
-        </Box>
-
-        <Box
-          display="grid"
-          gridTemplateColumns={{ md: "repeat(2, 1fr)", xs: "1fr" }}
-          gap={2}
-          sx={{ my: 3 }}
-        >
-          <Input startAdornment={<></>} placeholder="نام" />
-          <Input startAdornment={<></>} placeholder="نام خانوادگی" />
-          <Input startAdornment={<></>} placeholder="شماره موبایل" />
-          <Input startAdornment={<></>} placeholder="ایمیل" />
-          <Input startAdornment={<></>} placeholder="آدرس منزل" />
-          <Input startAdornment={<></>} placeholder="تلفن منزل" />
-        </Box>
-      </SecLayout>
-
-      <SecLayout text="تغییر رمز عبور">
-        <Box
-          display="grid"
-          gridTemplateColumns={{ md: "repeat(2, 1fr)", xs: "1fr" }}
-          gap={2}
-          sx={{ my: 3 }}
-        >
-          <Input
-            type="password"
-            startAdornment={<></>}
-            placeholder="رمز عبور جدید را وارد کنید"
-          />
-          <Input
-            type="password"
-            startAdornment={<></>}
-            placeholder="تکرار رمز عبور جدید"
-          />
-          <Box
-            gridColumn={"span 2"}
-            sx={{
-              display: "flex",
-              justifyContent: "end",
-            }}
-          >
-            <Btn>ذخیره کردن</Btn>
-          </Box>
-        </Box>
-      </SecLayout>
-    </>
+    <SecLayout text="مشخصات حساب کاربری">
+      <Box
+        sx={{
+          display: "flex",
+          gap: "10px",
+          alignItems: "center",
+        }}
+      >
+        <Avatar
+          sx={{ width: "75px", height: "75px" }}
+          src={data?.userInfo.img}
+        />
+        <Btn size="medium">ویرایش با تصویر جدید</Btn>
+        <Btn size="medium" variant="outlined">
+          حذف تصویر
+        </Btn>
+      </Box>
+      <UserForm initialVal={data?.userInfo} />
+    </SecLayout>
   );
 };
 

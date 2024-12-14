@@ -11,3 +11,15 @@ export type plantType = {
   dim?: [string, string, string];
   sunPlants?: boolean;
 };
+
+export type userType = {
+  id: string;
+  fname: string;
+  lname: string;
+  phone: string;
+  email: string;
+  add: string;
+  phoneH: string;
+  role: string;
+  img: string;
+};

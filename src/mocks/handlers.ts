@@ -26,7 +26,7 @@ export const handlers = [
         {
           user: {
             id: "1",
-            name: "hadiseh",
+            fname: "hadiseh",
             email: "hadise@gmail.com",
             phone: "09111111111",
             role: "user",
@@ -135,5 +135,21 @@ export const handlers = [
     }, 0);
 
     return HttpResponse.json({ totalPrice });
+  }),
+
+  http.get("/getUserInfo", () => {
+    const userInfo = {
+      id: "1",
+      fname: "hadiseh",
+      lname: "hosseini",
+      phone: "09111111111",
+      email: "hadise@gmail.com",
+      add: "sari",
+      phoneH: "01133024444",
+      role: "user",
+      img: "/img/user/1.jpg",
+    };
+
+    return HttpResponse.json({ userInfo: userInfo });
   }),
 ];

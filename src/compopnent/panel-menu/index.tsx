@@ -5,12 +5,13 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Email, Person, Medication } from "@mui/icons-material";
+import { Email, Person, Medication, Lock } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const PanelMenu = () => {
   const menuItems = [
     { text: "مشخصات حساب کاربری", icon: <Person />, route: "/panel" },
+    { text: "تغییر رمز عبور", icon: <Lock />, route: "/panel/change-pass" },
     {
       text: "مشاوره با گیاه پزشک",
       icon: <Medication />,

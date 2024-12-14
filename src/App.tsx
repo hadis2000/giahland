@@ -7,14 +7,15 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Panel from "./pages/panel";
 import UserInfo from "./pages/panel/user-info";
+import ChangePass from "./pages/panel/change-pass";
 import DoctorPlants from "./pages/panel/doctor-plants";
 import Message from "./pages/panel/message";
 import PlantsDetails from "./pages/plants-detail";
 import Test from "./test";
 
 // store
-import {store} from "./store"
-import {Provider} from 'react-redux'
+import { store } from "./store";
+import { Provider } from "react-redux";
 import PrivateRoute from "./compopnent/private-route";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             element={<PrivateRoute element={<Panel />} restricted={true} />}
           >
             <Route path="" element={<UserInfo />} />
+            <Route path="change-pass" element={<ChangePass />} />
             <Route path="doctor" element={<DoctorPlants />} />
             <Route path="message" element={<Message />} />
           </Route>
