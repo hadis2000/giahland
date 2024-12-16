@@ -4,6 +4,10 @@ import Btn from "../../../compopnent/button";
 import * as Yup from "yup";
 import { Box } from "@mui/material";
 import { userType } from "../../../model";
+import { useDispatch } from "react-redux";
+import { useNotifications } from "@toolpad/core/useNotifications";
+import { usePostData } from "../../../utils/apiService";
+import { updateUser } from "../../../features/auth/authSlice";
 
 const validation = Yup.object({
   fname: Yup.string(),
@@ -21,10 +25,27 @@ export type userFormPropType = {
 };
 
 const UserForm = ({ initialVal }: userFormPropType) => {
+  const dispatch = useDispatch();
+  const notifications = useNotifications();
+
+  const { mutate: postData } = usePostData({
+    successFunc: (data) => {
+      dispatch(updateUser(data.userInfo));
+      notifications.show(`اطلاعات شما با موفقیت ویرایش شد.`, {
+        autoHideDuration: 2000,
+        severity: "success",
+      });
+    },
+  });
+
+  const handleSubmit = (e: userType) => {
+    postData({ url: "/editeUserInfo", data: e });
+  };
+
   return (
     <Formik
       initialValues={initialVal}
-      onSubmit={() => {}}
+      onSubmit={handleSubmit}
       validationSchema={validation}
     >
       {({ touched, errors }) => (
@@ -90,7 +111,7 @@ const UserForm = ({ initialVal }: userFormPropType) => {
                 justifyContent: "end",
               }}
             >
-              <Btn>ویرایش</Btn>
+              <Btn type="submit">ویرایش</Btn>
             </Box>
           </Box>
         </FormikForm>

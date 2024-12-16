@@ -10,7 +10,7 @@ const UserInfo = () => {
   const userInfo = useSelector((state: RootState) => state.auth.user);
 
   const { data, isLoading } = useFetchData({
-    queryKey: ["userInfo"],
+    queryKey: ["userInfo", userInfo],
     apiUrl: "/getUserInfo",
     parameter: { userId: userInfo?.id },
   });

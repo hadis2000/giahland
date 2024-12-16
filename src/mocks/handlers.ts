@@ -3,6 +3,19 @@ import { http, HttpResponse } from "msw";
 import { plants, plantType, soilType, vaseType } from "../../data/db.json";
 import { CartItemType } from "../features/shopping-cart/cartSlice";
 
+
+let userInfo = {
+  id: "1",
+  fname: "hadiseh",
+  lname: "hosseini",
+  phone: "09111111111",
+  email: "hadise@gmail.com",
+  add: "sari",
+  phoneH: "01133024444",
+  role: "user",
+  img: "/img/user/1.jpg",
+};
+
 export const handlers = [
   // Intercept "GET https://example.com/user" requests...
   // http.get("https://example.com/user", () => {
@@ -25,12 +38,12 @@ export const handlers = [
       return HttpResponse.json(
         {
           user: {
-            id: "1",
-            fname: "hadiseh",
-            email: "hadise@gmail.com",
-            phone: "09111111111",
-            role: "user",
-            img: "/img/user/1.jpg",
+            id: userInfo.id,
+            fname: userInfo.fname,
+            email: userInfo.email,
+            phone: userInfo.phone,
+            role: userInfo.role,
+            img: userInfo.img,
           },
           token:
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYW1lIjoiaGFkaXNlaCIsImVtYWlsIjoiaGFkaXNlQGdtYWlsLmNvbSIsInBob25lIjoiMDkxMTExMTExMTEiLCJyb2xlIjoidXNlciJ9.oMeqzvN987UZrgwGshu-WrKxKYQhCC2Fb_iLI7cLtOM",
@@ -86,7 +99,6 @@ export const handlers = [
 
     return HttpResponse.json(plant);
   }),
-
   http.get("/getPlantTypeById", ({ request }) => {
     const url = new URL(request.url);
     const plantTypeId = url.searchParams.get("plantTypeId");
@@ -97,7 +109,6 @@ export const handlers = [
 
     return HttpResponse.json(plantTypeTitle);
   }),
-
   http.get("/getVaseTypeById", ({ request }) => {
     const url = new URL(request.url);
     const vaseId = url.searchParams.get("vaseId");
@@ -108,7 +119,6 @@ export const handlers = [
 
     return HttpResponse.json(vaseTitle);
   }),
-
   http.get("/getSoilTypeById", ({ request }) => {
     const url = new URL(request.url);
     const soilId = url.searchParams.get("soilId");
@@ -136,19 +146,15 @@ export const handlers = [
 
     return HttpResponse.json({ totalPrice });
   }),
-
   http.get("/getUserInfo", () => {
-    const userInfo = {
-      id: "1",
-      fname: "hadiseh",
-      lname: "hosseini",
-      phone: "09111111111",
-      email: "hadise@gmail.com",
-      add: "sari",
-      phoneH: "01133024444",
-      role: "user",
-      img: "/img/user/1.jpg",
-    };
+    return HttpResponse.json({ userInfo: userInfo });
+  }),
+  http.post("/editeUserInfo", async ({ request }) => {
+    const body = (await request.json()) as
+      | { phone: string; password: string }
+      | undefined;
+
+    userInfo = { ...userInfo, ...body };
 
     return HttpResponse.json({ userInfo: userInfo });
   }),
