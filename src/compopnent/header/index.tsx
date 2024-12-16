@@ -187,7 +187,7 @@ function Header() {
                   component="span"
                   sx={{ display: { md: "inline-block", xs: "none" } }}
                 >
-                  سلام؛ {user?.name}
+                  سلام؛ {user?.fname}
                 </Box>
               </Box>
             ) : (
