@@ -21,7 +21,7 @@ const Form = () => {
     successFunc: (data) => {
       dispatch(loginSuccess(data));
       nav("/panel");
-      notifications.show(`سلام ${data?.user?.name}! خوش آمدی  :) `, {
+      notifications.show(`سلام ${data?.user?.fname}! خوش آمدی  :) `, {
         autoHideDuration: 2000,
         severity: "success",
       });

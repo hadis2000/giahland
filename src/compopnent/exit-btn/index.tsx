@@ -22,7 +22,7 @@ const ExitBtn = () => {
   const logOutHandler = () => {
     dispatch(logout());
     nav("/");
-    notif.show(`به امید دیدار ${user?.name} :)`, {
+    notif.show(`به امید دیدار ${user?.fname} :)`, {
       autoHideDuration: 2000,
     });
   };

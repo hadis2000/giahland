@@ -20,6 +20,6 @@ export type userType = {
   email: string;
   add: string;
   phoneH: string;
-  role: string;
+  role: "user" | "admin";
   img: string;
 };

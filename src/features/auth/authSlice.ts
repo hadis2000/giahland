@@ -1,14 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { userType } from "../../model";
 
 export type UserStateType = {
-  user: {
-    id: string;
-    name: string;
-    email: string;
-    phone: string;
-    img: string;
-    role: "user" | "admin";
-  } | null;
+  user: userType | null;
   token: string | null;
 };
 
