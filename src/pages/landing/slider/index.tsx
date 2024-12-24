@@ -35,7 +35,7 @@ const Slider = ({ plantTypeTitle, plantTypeId }: SliderPopType) => {
       <CarouselItems height={400}>
         {(groupedItems as plantType[][]).map((group, index) => (
           <Box key={index} sx={{ display: "flex", gap: 10 }}>
-            {group.map((it, index) => (
+            {group?.map((it, index) => (
               <Card
                 key={index}
                 plantId={it.id}

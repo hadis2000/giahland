@@ -20,9 +20,7 @@ const List = () => {
     <CarouselItems height={300}>
       {groupedItems.map((group, index) => (
         <Box key={index} sx={{ display: "flex", gap: 10, m: 5 }}>
-          {group.map((it, index) => (
-            <Item key={index} {...it} />
-          ))}
+          {group?.map((it, index) => <Item key={index} {...it} />)}
         </Box>
       ))}
     </CarouselItems>
